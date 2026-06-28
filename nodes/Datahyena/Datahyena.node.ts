@@ -52,6 +52,7 @@ export class Datahyena implements INodeType {
     version: 1,
     subtitle: '={{ $parameter["resource"] }}',
     description: 'B2B growth signals: funding rounds, acquisitions, exec moves, companies, investors',
+    usableAsTool: true,
     defaults: { name: 'Datahyena' },
     inputs: ['main'],
     outputs: ['main'],

@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-datahyena",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "n8n community node for the Datahyena B2B growth-signals API: funding rounds, acquisitions, executive moves, companies, and investors.",
   "keywords": [
     "n8n-community-node-package",
