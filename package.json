@@ -1,0 +1,53 @@
+{
+  "name": "n8n-nodes-datahyena",
+  "version": "0.1.2",
+  "description": "n8n community node for the Datahyena B2B growth-signals API: funding rounds, acquisitions, executive moves, companies, and investors.",
+  "keywords": [
+    "n8n-community-node-package",
+    "datahyena",
+    "funding",
+    "signals",
+    "b2b",
+    "intent",
+    "sales"
+  ],
+  "license": "MIT",
+  "homepage": "https://datahyena.com",
+  "author": {
+    "name": "Datahyena",
+    "email": "team@datahyena.com"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').copyFileSync('nodes/Datahyena/datahyena.svg','dist/nodes/Datahyena/datahyena.svg')\"",
+    "dev": "tsc --watch",
+    "prepublishOnly": "tsc"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/DatahyenaApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Datahyena/Datahyena.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.3",
+    "n8n-workflow": "*",
+    "typescript": "^5.5.0"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkashRajpurohit/n8n-nodes-datahyena.git"
+  }
+}
