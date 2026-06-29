@@ -39,7 +39,7 @@ const COUNTRIES = [
   ['ZA', 'South Africa'],
 ].map(([value, name]) => ({ name, value }));
 
-const FUNDING_ROUNDS = ['pre-seed', 'seed', 'angel', 'series-a', 'series-b', 'series-c', 'series-d', 'series-e', 'series-f', 'growth', 'extension', 'bridge', 'convertible', 'safe', 'debt', 'grant', 'pre-ipo', 'secondary', 'pipe', 'other'].map((v) => ({ name: v, value: v }));
+const FUNDING_ROUNDS = [['pre-seed', 'Pre-Seed'], ['seed', 'Seed'], ['angel', 'Angel'], ['series-a', 'Series A'], ['series-b', 'Series B'], ['series-c', 'Series C'], ['series-d', 'Series D'], ['series-e', 'Series E'], ['series-f', 'Series F'], ['growth', 'Growth'], ['extension', 'Extension'], ['bridge', 'Bridge'], ['convertible', 'Convertible'], ['safe', 'Safe'], ['debt', 'Debt'], ['grant', 'Grant'], ['pre-ipo', 'Pre-IPO'], ['secondary', 'Secondary'], ['pipe', 'Pipe'], ['other', 'Other']].map(([value, name]) => ({ name, value }));
 
 const show = (resources: string[]) => ({ displayOptions: { show: { resource: resources } } });
 
@@ -106,9 +106,9 @@ export class Datahyena implements INodeType {
       { displayName: 'Funding Rounds', name: 'round', type: 'multiOptions', default: [], options: FUNDING_ROUNDS, ...show(['fundingEvent']) },
       { displayName: 'Min Amount (USD)', name: 'minAmountUsd', type: 'number', default: 0, ...show(['fundingEvent', 'acquisition']) },
       { displayName: 'Max Amount (USD)', name: 'maxAmountUsd', type: 'number', default: 0, ...show(['fundingEvent', 'acquisition']) },
-      { displayName: 'Payment Type', name: 'paymentType', type: 'options', default: '', options: [{ name: 'Any', value: '' }, ...['cash', 'stock', 'mixed', 'undisclosed'].map((v) => ({ name: v, value: v }))], ...show(['acquisition']) },
+      { displayName: 'Payment Type', name: 'paymentType', type: 'options', default: '', options: [{ name: 'Any', value: '' }, ...[['cash', 'Cash'], ['stock', 'Stock'], ['mixed', 'Mixed'], ['undisclosed', 'Undisclosed']].map(([value, name]) => ({ name, value }))], ...show(['acquisition']) },
       { displayName: 'Only Mergers', name: 'isMerger', type: 'boolean', default: false, ...show(['acquisition']) },
-      { displayName: 'Move Type', name: 'moveType', type: 'options', default: '', options: [{ name: 'Any', value: '' }, ...['appointment', 'promotion', 'departure', 'transition'].map((v) => ({ name: v, value: v }))], ...show(['execMove']) },
+      { displayName: 'Move Type', name: 'moveType', type: 'options', default: '', options: [{ name: 'Any', value: '' }, ...[['appointment', 'Appointment'], ['promotion', 'Promotion'], ['departure', 'Departure'], ['transition', 'Transition']].map(([value, name]) => ({ name, value }))], ...show(['execMove']) },
       { displayName: 'Role Seniority', name: 'roleSeniority', type: 'multiOptions', default: [], options: [{ name: 'C-Level', value: 'c_level' }, { name: 'VP-Level', value: 'vp_level' }, { name: 'Founder', value: 'founder' }], ...show(['execMove']) },
       { displayName: 'Investor Type', name: 'type', type: 'options', default: '', options: [{ name: 'Any', value: '' }, ...[['vc', 'VC'], ['angel', 'Angel'], ['cvc', 'Corporate VC'], ['pe', 'Private Equity'], ['growth', 'Growth'], ['accelerator', 'Accelerator'], ['family_office', 'Family Office'], ['syndicate', 'Syndicate'], ['unknown', 'Unknown']].map(([value, name]) => ({ name, value }))], ...show(['investor']) },
     ],

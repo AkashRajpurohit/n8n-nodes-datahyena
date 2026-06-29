@@ -20,6 +20,33 @@ Create a **Datahyena API** credential with your API key. Free key (50 credits, n
 
 Each supports **Get Many** with filters (date, country, round, amount, move type, seniority, investor type, and more) and returns all results via cursor pagination.
 
+## Usage example
+
+Fetch US funding rounds above $1M announced since the start of 2026:
+
+1. Add the **Datahyena** node and select your **Datahyena API** credential.
+2. Set **Resource** to `Funding Event` and **Operation** to `Get Many`.
+3. Configure the filters:
+   - **HQ Country**: `United States`
+   - **Funding Rounds**: `Seed`, `Series A` (or leave empty for all rounds)
+   - **Min Amount (USD)**: `1000000`
+   - **Since (ISO-8601)**: `2026-01-01T00:00:00.000Z`
+4. Set **Limit** to `25` (or enable **Return All** to page through every match).
+5. Execute. Each item is one funding round, for example:
+
+```json
+{
+  "company": { "name": "Acme AI", "domain": "acme.ai" },
+  "round": "series-a",
+  "amountUsd": 12000000,
+  "announcedAt": "2026-02-14",
+  "investors": [{ "name": "Sequoia" }],
+  "sources": [{ "url": "https://techcrunch.com/..." }]
+}
+```
+
+You can then pass these items to Slack, a spreadsheet, an AI node, or your CRM. The Datahyena node also works as a tool for AI Agents — attach it to an Agent's **Tool** input and it can fetch signals on demand.
+
 ## Links
 
 [datahyena.com](https://datahyena.com) · [Docs](https://datahyena.com/docs) · [API reference](https://datahyena.com/docs)
